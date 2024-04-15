@@ -8,7 +8,7 @@ const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
-    new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
+    new Date(evtB.date) < new Date(evtA.date) ? 1 : -1
   );
   const nextCard = () => {
     setTimeout(
@@ -45,7 +45,7 @@ const Slider = () => {
                   key={`${event.id}`}
                   type="radio"
                   name="radio-button"
-                  checked={idx === radioIdx}
+                  checked={index === radioIdx}
                 />
               ))}
             </div>
@@ -57,3 +57,7 @@ const Slider = () => {
 };
 
 export default Slider;
+
+// CORRECTIONS :
+// 1. LINE 11 / Descending order events (latest event first) : Invert EvtA and EvtB in the sort function + add a condition to check if the date is lower than the other date (1: -1)
+// 2. LINE 48 / Radio Buttons : The radio buttons were not working properly because the key was the same for all the radio buttons. I replaced idx by index to make sure the key is unique for each radio button.
