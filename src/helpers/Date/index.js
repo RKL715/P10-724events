@@ -14,3 +14,5 @@ export const MONTHS = {
 };
 
 export const getMonth = (date) => MONTHS[date.getMonth()+1];
+
+// Adding +1 to the month because getMonth() returns a 0-indexed month
