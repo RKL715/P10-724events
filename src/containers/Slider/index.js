@@ -14,9 +14,9 @@ const Slider = () => {
   const nextCard = () => {
     if (!byDateDesc) return; // Problem 4
     setTimeout(
-      () => setIndex(index < byDateDesc.length ? index + 1 : 0),
+      () => setIndex((index + 1) % byDateDesc.length),
       5000
-    );
+    ); // Problem 5
   };
   useEffect(() => {
     nextCard();
@@ -65,5 +65,5 @@ export default Slider;
 // 2. LINE 47 / Radio Buttons : The radio buttons were not working properly because the key was the same for all the radio buttons. I replaced idx by index to make sure the key is unique for each radio button.
 // 3. LINE 44 and 46 / Children with the same key : I changed key={'${event.id}'} to key={'${_.title}'}. The underscore is a convention to indicate that the variable is not used in the map function.
 // 4. LINE 15 / ByDateDesc not defined : I added if (!byDateDesc) return; to prevent the function from running if byDateDesc is undefined.
-// 5. LINE  / Blank Card Problem :
+// 5. LINE  / Blank Card Problem : changed the setTimeout function to setIndex((index + 1) % byDateDesc.length) to prevent the blank card from appearing. Modulo operator will make sure the index is always within the range of the array.
 // 6. LINE  / No month in first card :
