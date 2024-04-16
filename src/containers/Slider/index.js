@@ -66,4 +66,4 @@ export default Slider;
 // 3. LINE 44 and 46 / Children with the same key : I changed key={'${event.id}'} to key={'${_.title}'}. The underscore is a convention to indicate that the variable is not used in the map function.
 // 4. LINE 15 / ByDateDesc not defined : I added if (!byDateDesc) return; to prevent the function from running if byDateDesc is undefined.
 // 5. LINE  / Blank Card Problem : changed the setTimeout function to setIndex((index + 1) % byDateDesc.length) to prevent the blank card from appearing. Modulo operator will make sure the index is always within the range of the array.
-// 6. LINE  / No month in first card :
+// 6. LINE  / No month in first card and month not right : Month displayed aren't right. (it's displayed minus 1 eg: month in mars go to february). I added +1 to the getMonth function to fix the issue (zero-based indexing).
