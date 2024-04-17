@@ -14,7 +14,7 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   const {last} = useData()
-  console.log(last)
+  console.log ("Value of 'last':", last)
   return <>
     <header>
       <Menu />
@@ -118,7 +118,6 @@ const Page = () => {
       <div className="col presta">
         <h3>Notre dernière prestation</h3>
         {last &&(
-            console.log ("Value of 'last':", last),
         <EventCard
           imageSrc={last?.cover}
           imageAlt={last?.description}
