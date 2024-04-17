@@ -13,8 +13,10 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const {last} = useData()
+  const {data} = useData()
+  const last = data ? data.events[data.events.length - 1] : null;
   console.log ("Value of 'last':", last)
+
   return <>
     <header>
       <Menu />
@@ -164,5 +166,6 @@ const Page = () => {
 export default Page;
 
 // 1. LINE   : PROP ImageSrc & Title issue (undefined) : Added {last&&()} to check if last is not null, then
+// added   const last = data ? data.events[data.events.length - 1] : null; to get the last event.
 // 2. LINE   : PROP ImageAlt missing : Added it
 // 3. LINE   : PROP label not right : Changed it to last?.type. Removed label="boom".
