@@ -43,3 +43,6 @@ EventCard.defaultProps = {
 }
 
 export default EventCard;
+
+// 1. LINE   : PROP ImageSrc issue (undefined) :
+// 2. LINE   : PROP Title issue (undefined) :

@@ -14,6 +14,7 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   const {last} = useData()
+  console.log ("Value of 'last':", last)
   return <>
     <header>
       <Menu />
@@ -115,14 +116,17 @@ const Page = () => {
     </main>
     <footer className="row">
       <div className="col presta">
-        <h3>Notre derniére prestation</h3>
+        <h3>Notre dernière prestation</h3>
+        {last &&(
         <EventCard
           imageSrc={last?.cover}
+          imageAlt={last?.description}
           title={last?.title}
           date={new Date(last?.date)}
           small
-          label="boom"
+          label={last?.type}
         />
+        )}
       </div>
       <div className="col contact">
         <h3>Contactez-nous</h3>
@@ -158,3 +162,7 @@ const Page = () => {
 }
 
 export default Page;
+
+// 1. LINE   : PROP ImageSrc & Title issue (undefined) : Added {last&&()} to check if last is not null, then
+// 2. LINE   : PROP ImageAlt missing : Added it
+// 3. LINE   : PROP label not right : Changed it to last?.type. Removed label="boom".
