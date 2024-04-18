@@ -16,6 +16,7 @@ const Form = ({ onSuccess, onError }) => {
       try {
         await mockContactApi();
         setSending(false);
+        onSuccess(); // PROBLEM 1
       } catch (err) {
         setSending(false);
         onError(err);
@@ -64,3 +65,6 @@ Form.defaultProps = {
 }
 
 export default Form;
+
+
+// 1. LINE 19 : Success message does not appear when the form is submitted : Added onSuccess() to call the function when the form is submitted
