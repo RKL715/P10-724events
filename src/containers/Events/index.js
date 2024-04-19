@@ -16,7 +16,7 @@ const EventList = () => {
   const filteredEvents = (
     (!type
       ? data?.events
-      : data?.events) || []
+      : data?.events.filter((event) => event.type === type)) || [] // PROBLEM 1
   ).filter((event, index) => {
     if (
       (currentPage - 1) * PER_PAGE <= index &&
@@ -74,3 +74,5 @@ const EventList = () => {
 };
 
 export default EventList;
+
+// 1. LINE 19 : : The filtering method was not working properly. I added a comparison to check between type and event.type to filter the events. BEFORE : data?.events)) || [] NOW : (data?.events.filter((event) => event.type === type)) || []

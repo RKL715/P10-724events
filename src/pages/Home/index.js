@@ -13,8 +13,8 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
-  const {last} = useData()
-  console.log ("Value of 'last':", last)
+  const {data} = useData()
+  const last = data ? data.events[data.events.length - 1] : null; // Problem 2
   return <>
     <header>
       <Menu />
@@ -117,7 +117,7 @@ const Page = () => {
     <footer className="row">
       <div className="col presta">
         <h3>Notre dernière prestation</h3>
-        {last &&(
+        {last &&( // Problem 2bis
         <EventCard
           imageSrc={last?.cover}
           imageAlt={last?.description}
@@ -163,6 +163,7 @@ const Page = () => {
 
 export default Page;
 
-// 1. LINE   : PROP ImageSrc & Title issue (undefined) : Added {last&&()} to check if last is not null, then
+// 1. LINE  17 + 120 : PROP ImageSrc & Title issue (undefined) : Added {last&&()} to check if last is not null, then
+// added   const last = data ? data.events[data.events.length - 1] : null; to get the last event.
 // 2. LINE   : PROP ImageAlt missing : Added it
 // 3. LINE   : PROP label not right : Changed it to last?.type. Removed label="boom".

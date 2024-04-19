@@ -16,9 +16,9 @@ const Select = ({
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
   const changeValue = (newValue) => {
-    onChange();
+    onChange(newValue); // Problem 1
     setValue(newValue);
-    setCollapsed(newValue);
+    setCollapsed(true);
   };
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
@@ -99,3 +99,6 @@ Select.defaultProps = {
 }
 
 export default Select;
+
+
+// 1. LINE 19 : onChange is not called with the new value : Added onChange(newValue) to call the function with the new value (was just onChange())
