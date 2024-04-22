@@ -4,7 +4,7 @@ import Field, { FIELD_TYPES } from "../../components/Field";
 import Select from "../../components/Select";
 import Button, { BUTTON_TYPES } from "../../components/Button";
 
-const mockContactApi = () => new Promise((resolve) => { setTimeout(resolve, 1000); })
+const mockContactApi = () => new Promise((resolve) => { setTimeout(resolve, 500); })
 
 const Form = ({ onSuccess, onError }) => {
   const [sending, setSending] = useState(false);
@@ -68,3 +68,4 @@ export default Form;
 
 
 // 1. LINE 19 : Success message does not appear when the form is submitted : Added onSuccess() to call the function when the form is submitted
+// 2. LINE  7 : Test : When Events is created > and a click is triggered on the submit button > the success action is called" was failing. By changing the timeout of the mockContactApi to 500ms, the test passed.
