@@ -23,7 +23,7 @@ const Select = ({
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
       {label && <div className="label">{label}</div>}
-      <div className="Select">
+      <div className="Select" style={{ cursor: 'pointer'}}>
         <ul>
           <li className={collapsed ? "SelectTitle--show" : "SelectTitle--hide"}>
             {value || (!titleEmpty && "Toutes")}
@@ -102,3 +102,4 @@ export default Select;
 
 
 // 1. LINE 19 : onChange is not called with the new value : Added onChange(newValue) to call the function with the new value (was just onChange())
+// 2. LINE 26 : Added a cursor : pointer to the style of the select div to show that it is clickable.
