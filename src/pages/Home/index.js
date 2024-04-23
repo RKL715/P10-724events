@@ -14,7 +14,7 @@ import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
   const {data} = useData()
-  const last = data ? data.events[data.events.length - 1] : null; // Problem 2
+  const last = data ? data.events[data.events.length - 1] : null; // Problem 1
   return <>
     <header>
       <Menu />
@@ -24,7 +24,7 @@ const Page = () => {
         <Slider />
       </section>
       <section className="ServicesContainer">
-        <h2 className="Title">Nos services</h2>
+        <h2 className="Title" id="nos-services">Nos services</h2>
         <p>Nous organisons des événements sur mesure partout dans le monde</p>
         <div className="ListContainer">
           <ServiceCard imageSrc="/images/priscilla-du-preez-Q7wGvnbuwj0-unsplash1.png">
@@ -53,11 +53,11 @@ const Page = () => {
         </div>
       </section>
       <section className="EventsContainer">
-        <h2 className="Title">Nos réalisations</h2>
+        <h2 className="Title" id="nos-realisations">Nos réalisations</h2>
         <EventList />
       </section>
       <section className="PeoplesContainer">
-        <h2 className="Title">Notre équipe</h2>
+        <h2 className="Title" id="notre-equipe">Notre équipe</h2>
         <p>Une équipe d’experts dédiés à l’ogranisation de vos événements</p>
         <div className="ListContainer">
           <PeopleCard
@@ -117,14 +117,14 @@ const Page = () => {
     <footer className="row">
       <div className="col presta">
         <h3>Notre dernière prestation</h3>
-        {last &&( // Problem 2bis
+        {last &&( // Problem 1bis
         <EventCard
           imageSrc={last?.cover}
-          imageAlt={last?.description}
+          imageAlt={last?.description} // PROBLEM 2
           title={last?.title}
           date={new Date(last?.date)}
           small
-          label={last?.type}
+          label={last?.type} // PROBLEM 3
         />
         )}
       </div>
@@ -165,5 +165,6 @@ export default Page;
 
 // 1. LINE  17 + 120 : PROP ImageSrc & Title issue (undefined) : Added {last&&()} to check if last is not null, then
 // added   const last = data ? data.events[data.events.length - 1] : null; to get the last event.
-// 2. LINE   : PROP ImageAlt missing : Added it
-// 3. LINE   : PROP label not right : Changed it to last?.type. Removed label="boom".
+// 2. LINE  123 : PROP ImageAlt missing : Added it
+// 3. LINE 127  : PROP label not right : Changed it to last?.type. Removed label="boom".
+// 4. LINE  27,  : NavBar not working. Added the missing ID to each section with the one present in container/Menu/index.js
