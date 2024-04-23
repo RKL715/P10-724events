@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import "./style.scss";
 
+
 const Select = ({
   selection,
   onChange,
@@ -21,7 +22,8 @@ const Select = ({
     setCollapsed(true);
   };
   return (
-    <div className={`SelectContainer ${type}`} data-testid="select-testid">
+
+    <div className={`SelectContainer ${type}`} data-testid="select-testid" onClick={() => setCollapsed(!collapsed)} role="button" tabIndex='0'>
       {label && <div className="label">{label}</div>}
       <div className="Select">
         <ul>
