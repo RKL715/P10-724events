@@ -23,7 +23,7 @@ const Select = ({
   return (
     <div className={`SelectContainer ${type}`} data-testid="select-testid">
       {label && <div className="label">{label}</div>}
-      <div className="Select" style={{ cursor: 'pointer'}}>
+      <div className="Select">
         <ul>
           <li className={collapsed ? "SelectTitle--show" : "SelectTitle--hide"}>
             {value || (!titleEmpty && "Toutes")}
@@ -37,7 +37,7 @@ const Select = ({
                 </li>
               )}
               {selection.map((s) => (
-                <li key={s} onClick={() => changeValue(s)}>
+                <li key={s} onClick={() => changeValue(s)} style={{ cursor: 'pointer'}}>
                   <input
                     defaultChecked={value === s}
                     name="selected"
