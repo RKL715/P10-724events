@@ -11,6 +11,9 @@ const Slider = () => {
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
     new Date(evtB.date) < new Date(evtA.date) ? 1 : -1 // Problem 1
   );
+
+  const generateUniqueId = () => `id-${Math.random().toString(36).substr(2, 9)}`;
+
   const nextCard = () => {
     if (!byDateDesc) return; // Problem 4
     setTimeout(
@@ -24,9 +27,9 @@ const Slider = () => {
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (
-        <>
+        <div key={generateUniqueId()}>
           <div
-            key={event.id}
+            key={event.title}
             className={`SlideCard SlideCard--${
               index === idx ? "display" : "hide"
             }`}
@@ -48,12 +51,12 @@ const Slider = () => {
                   type="radio"
                   name="radio-button"
                   checked={index === radioIdx} // Problem 2
-                    onChange={() => setIndex(radioIdx)} // Problem 7
+                  onChange={() => setIndex(radioIdx)} // Problem 7
                 />
               ))}
             </div>
           </div>
-        </>
+        </div>
       ))}
     </div>
   );
@@ -69,3 +72,4 @@ export default Slider;
 // 5. LINE 17 / Blank Card Problem : changed the setTimeout function to setIndex((index + 1) % byDateDesc.length) to prevent the blank card from appearing. Modulo operator will make sure the index is always within the range of the array.
 // 6. LINE  / No month in first card and month not right : Month displayed aren't right. (it's displayed minus 1 eg: month in mars go to february). I added +1 to the getMonth function to fix the issue (zero-based indexing).
 // 7. LINE 51 / Warning in console : "You provided a `checked` prop to a form field without an `onChange` handler". // I added OnChange function to the radio buttons to fix the issue.
+// 8. LINE 15 / Console Warning : Warning: Each child in a list should have a unique "key" prop. // I
