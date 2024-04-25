@@ -16,6 +16,7 @@ const EventCard = ({
       data-testid="card-testid"
       className={`EventCard${small ? " EventCard--small" : ""}`}
       {...props}
+        style={ { cursor : "unset" } }
     >
       <div className="EventCard__imageContainer">
          <img data-testid="card-image-testid" src={imageSrc} alt={imageAlt} />
