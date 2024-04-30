@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import "./style.scss";
 
+
 const Select = ({
   selection,
   onChange,
@@ -21,7 +22,8 @@ const Select = ({
     setCollapsed(true);
   };
   return (
-    <div className={`SelectContainer ${type}`} data-testid="select-testid">
+
+    <div className={`SelectContainer ${type}`} data-testid="select-testid" onClick={() => setCollapsed(!collapsed)} role="button" tabIndex='0'>
       {label && <div className="label">{label}</div>}
       <div className="Select">
         <ul>
@@ -31,13 +33,13 @@ const Select = ({
           {!collapsed && (
             <>
               {!titleEmpty && (
-                <li onClick={() => changeValue(null)}>
+                <li onClick={() => changeValue(null)} style={{ cursor: 'pointer'}}>
                   <input defaultChecked={!value} name="selected" type="radio" />{" "}
                   Toutes
                 </li>
               )}
               {selection.map((s) => (
-                <li key={s} onClick={() => changeValue(s)}>
+                <li key={s} onClick={() => changeValue(s)} style={{ cursor: 'pointer'}}>
                   <input
                     defaultChecked={value === s}
                     name="selected"
@@ -101,4 +103,6 @@ Select.defaultProps = {
 export default Select;
 
 
-// 1. LINE 19 : onChange is not called with the new value : Added onChange(newValue) to call the function with the new value (was just onChange())
+// 1. LINE 20 : onChange is not called with the new value : Added onChange(newValue) to call the function with the new value (was just onChange())
+// 2. LINE 36 : Added a cursor : pointer to the style of the select div to show that it is clickable. And for "Toutes" too.
+// 3. LINE 26 : Added an onClick event to the div to control the opening and closing of the list.

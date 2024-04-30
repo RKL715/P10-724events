@@ -1,5 +1,6 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import {fireEvent, getByTestId, render, screen} from "@testing-library/react";
 import Home from "./index";
+import EventCard from "../../components/EventCard";
 
 describe("When Form is created", () => {
   it("a list of fields card is displayed", async () => {
@@ -30,7 +31,9 @@ describe("When Form is created", () => {
 
 describe("When a page is created", () => {
   it("a list of events is displayed", () => {
-    // to implement
+     const { getByTestId } = render(<EventCard />);
+        const eventCard = getByTestId("card-testid");
+     expect(eventCard).toBeInTheDocument();
   })
   it("a list a people is displayed", () => {
     // to implement
