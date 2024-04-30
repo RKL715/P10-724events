@@ -66,10 +66,10 @@ export default Slider;
 
 // CORRECTIONS :
 // 1. LINE 12 / Descending order events (latest event first) : Invert EvtA and EvtB in the sort function + add a condition to check if the date is lower than the other date (1: -1)
-// 2. LINE 50 / Radio Buttons : The radio buttons were not working properly because the key was the same for all the radio buttons. I replaced idx by index to make sure the key is unique for each radio button.
-// 3. LINE 47 / Children with the same key : I changed key={'${event.id}'} to key={'${_.title}'}. The underscore is a convention to indicate that the variable is not used in the map function.
-// 4. LINE 15 / ByDateDesc not defined : I added if (!byDateDesc) return; to prevent the function from running if byDateDesc is undefined.
+// 2. LINE 53 / Radio Buttons : The radio buttons were not working properly because Idx was used instead of Index. I replaced idx by index.
+// 3. LINE 50 / Children with the same key : I changed key={'${event.id}'} to key={'${_.title}'}. The underscore is a convention to indicate that the variable is not used in the map function.
+// 4. LINE 18 / ByDateDesc not defined : I added if (!byDateDesc) return; to prevent the function from running if byDateDesc is undefined.
 // 5. LINE 17 / Blank Card Problem : changed the setTimeout function to setIndex((index + 1) % byDateDesc.length) to prevent the blank card from appearing. Modulo operator will make sure the index is always within the range of the array.
-// 6. LINE  / No month in first card and month not right : Month displayed aren't right. (it's displayed minus 1 eg: month in mars go to february). I added +1 to the getMonth function to fix the issue (zero-based indexing).
-// 7. LINE 51 / Warning in console : "You provided a `checked` prop to a form field without an `onChange` handler". // I added OnChange function to the radio buttons to fix the issue.
+// 6. HELPER/DATE / No month in first card and month not right : Month displayed aren't right. (it's displayed minus 1 eg: month in mars go to february). I added +1 to the getMonth function to fix the issue (zero-based indexing).
+// 7. LINE 54 / Warning in console : "You provided a `checked` prop to a form field without an `onChange` handler". // I added OnChange function to the radio buttons to fix the issue.
 // 8. LINE 15 / Console Warning : Warning: Each child in a list should have a unique "key" prop. // I

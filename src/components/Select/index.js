@@ -104,4 +104,5 @@ export default Select;
 
 
 // 1. LINE 20 : onChange is not called with the new value : Added onChange(newValue) to call the function with the new value (was just onChange())
-// 2. LINE 26 : Added a cursor : pointer to the style of the select div to show that it is clickable. And for "Toutes" too.
+// 2. LINE 36 : Added a cursor : pointer to the style of the select div to show that it is clickable. And for "Toutes" too.
+// 3. LINE 26 : Added an onClick event to the div to control the opening and closing of the list.
